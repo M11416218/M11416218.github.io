@@ -50,6 +50,31 @@
       let isReady = false;
       let smoothedAngle = [0, 0], lastTickAngle = [0, 0], smoothedPos = [{x:0, y:0}, {x:0, y:0}];
       let mainColor, colors = ['#00ffff', '#ff00ff', '#ffff00'], colorIdx = 0;
+
+      // 21 個關節點各自顏色 (卡通彩虹粉紫色系)
+      const KEYPOINT_COLORS = [
+        '#ff7eb3', // 0  手腕      - 粉紅
+        '#ffaa3e', // 1  拇指 CMC  - 橘
+        '#ffe44a', // 2  拇指 MCP  - 黃
+        '#b8ff4a', // 3  拇指 IP   - 黃綠
+        '#4aff80', // 4  拇指尖    - 亮綠
+        '#4affd8', // 5  食指 MCP  - 青綠
+        '#4ad4ff', // 6  食指 PIP  - 天藍
+        '#4a8cff', // 7  食指 DIP  - 藍
+        '#b04aff', // 8  食指尖    - 紫
+        '#ff4adc', // 9  中指 MCP  - 粉紫
+        '#ff5c9e', // 10 中指 PIP  - 玫瑰
+        '#ffa07a', // 11 中指 DIP  - 橙粉
+        '#ffd700', // 12 中指尖    - 金黃
+        '#a0ff5c', // 13 無名 MCP  - 草綠
+        '#3cffc8', // 14 無名 PIP  - 薄荷
+        '#3cb4ff', // 15 無名 DIP  - 水藍
+        '#7878ff', // 16 無名尖    - 藍紫
+        '#c83cff', // 17 小指 MCP  - 亮紫
+        '#ff3ccc', // 18 小指 PIP  - 桃紅
+        '#ff607a', // 19 小指 DIP  - 珊瑚
+        '#00ffff', // 20 小指尖    - 亮青
+      ];
       let glitchTimer = 0, osc, envelope, linkOsc;
       let modelCheckTimer = 0;
 
@@ -144,7 +169,7 @@
 
             checkButtons(tx, ty);
             drawSciFiSkeleton(hand, gx, gy);
-            drawFingertips(hand, gx, gy);
+            drawAllKeypoints(hand, gx, gy);
             drawHoloDial(hand, i, gx, gy);
             drawCursor(tx, ty);
           }
@@ -227,12 +252,37 @@
         }
       }
 
-      function drawFingertips(hand, gx, gy) {
-        [4, 8, 12, 16, 20].forEach(idx => {
-          let k = hand.keypoints[idx];
-          let x = map(k.x, 0, 640, 0, width) + gx, y = map(k.y, 0, 480, 0, height) + gy;
-          noFill(); stroke(255, 180); circle(x, y, 12);
-          fill(255, 150); textSize(9); text(`ID:${idx}`, x+15, y-10);
+      function drawAllKeypoints(hand, gx, gy) {
+        hand.keypoints.forEach((k, idx) => {
+          let x = map(k.x, 0, 640, 0, width) + gx;
+          let y = map(k.y, 0, 480, 0, height) + gy;
+          let c = color(KEYPOINT_COLORS[idx % KEYPOINT_COLORS.length]);
+          let pulse = sin(frameCount * 6 + idx * 30) * 3; // 呼吸動畫
+          let r = 18 + pulse;
+
+          // 外光暈
+          noStroke();
+          fill(red(c), green(c), blue(c), 50);
+          circle(x, y, r * 2.6);
+
+          // 白色陰影底圓
+          fill(30, 20, 40, 200);
+          circle(x, y, r + 4);
+
+          // 主色實心圓
+          fill(c);
+          circle(x, y, r);
+
+          // 白色亮邊
+          noFill(); stroke(255, 200); strokeWeight(1.5);
+          circle(x, y, r);
+
+          // ID 標籤（指尖特別顯示）
+          if ([4, 8, 12, 16, 20].includes(idx)) {
+            noStroke(); fill(255);
+            textSize(10); textAlign(LEFT, CENTER);
+            text(`ID:${idx}`, x + r/2 + 4, y);
+          }
         });
       }
 
