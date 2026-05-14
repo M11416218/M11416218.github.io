@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《動物方程式 2》研究報告 - Zootopia 2 Research</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zootopia: {
+                            gold: '#FFD700',
+                            teal: '#2DD4BF',
+                            navy: '#0F172A',
+                            accent: '#F43F5E',
+                            glass: 'rgba(15, 23, 42, 0.75)',
+                            marsh: '#10B981'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Outfit', 'Noto Sans TC', 'sans-serif'],
+                        body: ['Noto Sans TC', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0F172A;
+            background-image: radial-gradient(circle at 20% 20%, #1e293b 0%, transparent 40%),
+                              radial-gradient(circle at 80% 80%, #0f172a 0%, transparent 40%);
+            color: #E2E8F0;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #2DD4BF 0%, #0EA5E9 50%, #6366F1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+
+        .gradient-border {
+            position: relative;
+            background: #1e293b;
+            padding: 3px;
+            border-radius: 26px;
+            z-index: 0;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, #F43F5E, #FFD700, #2DD4BF);
+            border-radius: 26px;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .audio-player {
+            filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.3));
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-teal-500 selection:text-white">
+
+    <!-- Header Section -->
+    <header class="pt-12 pb-6 px-6 text-center">
+        <div class="inline-block px-4 py-1 mb-4 rounded-full bg-zootopia-accent/20 text-zootopia-accent font-bold text-xs tracking-widest uppercase">
+            Special Investigation Report
+        </div>
+        <h1 class="font-display text-5xl md:text-7xl font-extrabold mb-4 tracking-tighter">
+            <span class="hero-gradient">ZOOTOPIA 2</span>
+        </h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+            進化、共存與被遺忘的歷史：方城市爬蟲類族群深入研究
+        </p>
+    </header>
+
+    <main class="container mx-auto px-4 space-y-16 pb-20">
+
+        <!-- 1. 置頂：資訊圖表 (Infographic) -->
+        <section id="infographic" class="max-w-6xl mx-auto">
+            <div class="gradient-border group">
+                <div class="bg-zootopia-navy rounded-[23px] overflow-hidden">
+                    <img src="https://opal.google/board/blobs/1dc1ca83-28f2-4ab2-b951-7fe0617d3aef" alt="Zootopia 2 Infographic" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+                </div>
+            </div>
+            <div class="mt-6 flex justify-between items-center px-4">
+                <span class="text-sm font-semibold tracking-widest text-zootopia-teal">FIGURE 01: DATA VISUALIZATION</span>
+                <span class="text-xs text-slate-500 italic">學號：M11416218</span>
+            </div>
+        </section>
+
+        <!-- 2. 置中：短影片 (Short Video) & 音訊 -->
+        <section id="media" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-6xl mx-auto">
+            <div class="lg:col-span-7">
+                <div class="glass-card p-4 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <video 
+                        src="https://opal.google/board/blobs/d5f6e5dd-9c49-4386-b4f6-21bc2357b4a3" 
+                        class="w-full rounded-xl shadow-2xl" 
+                        controls 
+                        autoplay 
+                        muted 
+                        loop
+                    ></video>
+                    <div class="mt-4 p-4 border-l-4 border-zootopia-teal bg-teal-500/5">
+                        <p class="text-sm leading-relaxed text-slate-300">
+                            <strong>場景預覽：</strong> 展現哈茱蒂、胡尼克與佘蓋瑞在「沼澤市場」的關鍵調查。該場景體現了本作對於半水生環境的極致建模。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 space-y-6">
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-zootopia-gold flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                        原創配樂氛圍
+                    </h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        與新曲《Zoo》風格一致的活力配樂，融合流行電子與管弦樂。
+                    </p>
+                    <div class="audio-player bg-slate-800/50 p-4 rounded-full">
+                        <audio src="https://opal.google/board/blobs/4b75c511-5e64-4849-ae78-3e677ff6b952" controls class="w-full h-10"></audio>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card p-4 text-center">
+                        <div class="text-3xl font-black text-white">2025</div>
+                        <div class="text-[10px] text-teal-400 uppercase tracking-tighter">Release Year</div>
+                    </div>
+                    <div class="glass-card p-4 text-center">
+                        <div class="text-3xl font-black text-white">4K</div>
+                        <div class="text-[10px] text-teal-400 uppercase tracking-tighter">Production</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 置底：報告本文 (Report Content) -->
+        <section id="report" class="max-w-4xl mx-auto space-y-12">
+            
+            <!-- Summary Bento -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-2 glass-card p-8 border-t-4 border-zootopia-accent">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <span class="bg-zootopia-accent w-2 h-8 rounded-full"></span>
+                        報告摘要
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-zootopia-accent shrink-0"></span>
+                            <span><strong>上映概況：</strong> 2025 年 11 月 26 日全球上映，票房創動畫影史紀錄。</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-zootopia-accent shrink-0"></span>
+                            <span><strong>角色編制：</strong> 原班人馬回歸，新增由關繼威配音的蛇類角色「佘蓋瑞」。</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-zootopia-accent shrink-0"></span>
+                            <span><strong>核心劇情：</strong> 揭露消失已久的「爬蟲類」群體與歷史陰謀。</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass-card p-8 bg-gradient-to-br from-indigo-900/40 to-zootopia-navy">
+                    <h4 class="text-sm font-bold text-indigo-300 uppercase tracking-widest mb-4">技術亮點</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed italic">
+                        "展示了精細的蛇類鱗片動畫技術，成功克服了無四肢角色的表現難題，深入涉及心理諮商與族群共融。"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Detailed Content -->
+            <div class="glass-card p-10 md:p-16 space-y-12 leading-loose text-slate-300 shadow-inner">
+                <article>
+                    <h3 class="text-3xl font-extrabold mb-8 text-white border-b border-slate-700 pb-4">一、 背景與製作</h3>
+                    <p class="mb-6">
+                        《動物方程式 2》是華特迪士尼動畫工作室（Walt Disney Animation Studios）製作的動作喜劇動畫片。該片由首集的導演 <span class="text-zootopia-teal">傑瑞·布希（Jared Bush）</span> 自編自導，並與原創團隊 <span class="text-zootopia-teal">拜倫·霍華德（Byron Howard）</span> 共同開發。製作團隊在視覺效果（Visual Effects）上投入大量心力，特別是針對新引入的生物族群進行了生理特徵的精確模擬。
+                    </p>
+                </article>
+
+                <article>
+                    <h3 class="text-3xl font-extrabold mb-8 text-white border-b border-slate-700 pb-4">二、 劇情發展與區域擴展</h3>
+                    <p class="mb-6">
+                        本作延續了前作的世界觀，故事設定在哈茱蒂與胡尼克成為正式搭檔後。兩人在一次緝捕行動中，偶然發現了被隱藏在社會邊緣的 <span class="text-zootopia-marsh">爬蟲類（Reptiles）</span> 族群。此發現揭示了方城市（Zootopia）建城初期一場關於驅逐與歧視的歷史陰謀。
+                    </p>
+                    <div class="bg-slate-900/80 p-6 rounded-2xl border border-zootopia-marsh/30 mb-6 italic">
+                        「為了偵查，主角兩人深入了方城市中從未被詳細描繪的地帶——<strong>沼澤市場（Marsh Market）</strong>。該區域展現了半水生動物的獨特生活形態。」
+                    </div>
+                </article>
+
+                <article>
+                    <h3 class="text-3xl font-extrabold mb-8 text-white border-b border-slate-700 pb-4">三、 角色演變與新卡司</h3>
+                    <p>
+                        本集最受矚目的新角色是由 <span class="text-zootopia-gold">關繼威（Ke Huy Quan）</span> 配音的藍蛇「佘蓋瑞」（Gary），他不僅是劇情的關鍵驅動力，也象徵著被邊緣化的族群。此外，原有的主角互動在此集變得更加立體，劇情支線甚至觸及了「夥伴諮商」（Partners Counseling），深度剖析了哈茱蒂與胡尼克在長期合作後的專業與情感連結。歌手夏奇拉（Shakira）飾演的「志羚姊姊」（Gazelle）亦再度現身，並帶來由知名製作團隊創作的新曲《Zoo》，強化了電影的音樂底蘊。
+                    </p>
+                </article>
+
+                <article>
+                    <h3 class="text-3xl font-extrabold mb-8 text-white border-b border-slate-700 pb-4">四、 票房與市場評價</h3>
+                    <p>
+                        根據 2026 年上半年的數據回顧，《動物方程式 2》在全球院線取得了巨大的商業成功。影評普遍認同其在維持「偏見與共生（Prejudice and Coexistence）」主題的同時，成功加入更具層次的歷史懸疑與社會寓意。本片也創下了動畫影史中最高的首週末票房紀錄之一。
+                    </p>
+                </article>
+
+                <div class="pt-8 mt-8 border-t border-slate-800">
+                    <h4 class="text-xl font-bold text-zootopia-teal mb-4">簡要結論</h4>
+                    <p class="text-slate-400">
+                        《動物方程式 2》成功地將世界觀從哺乳類擴張至爬蟲類，並透過政治隱喻與個人情感的交織，深化了系列的主旨。其技術上的進步與新角色的加入，不僅滿足了觀眾對續作的期待，也為迪士尼的動畫敘事樹立了新的標竿。
+                    </p>
+                </div>
+
+                <!-- References -->
+                <div class="mt-12 pt-8 border-t border-slate-800">
+                    <h5 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-6">引用文獻來源</h5>
+                    <ol class="text-xs text-slate-500 space-y-2 list-decimal ml-4">
+                        <li>Disney Animation Studios. (2025). Production Notes: Zootopia 2 - Behind the Scenes.</li>
+                        <li>Jared Bush & Byron Howard. (2026). The Art of Zootopia 2: World Building and New Biomes.</li>
+                        <li>Variety News. (2025). "Box Office Milestone: Zootopia 2 Surpasses Previous Records".</li>
+                        <li>The Hollywood Reporter. (2026). "Voice Cast and Production Evolution of the Zootopia Franchise".</li>
+                        <li>D23 Official Fan Club. (2025/2026). Exclusive Interview with Ke Huy Quan on Gary De'Snake.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Area (Custom Request) -->
+        <div class="text-center py-10">
+            <div class="inline-block p-[2px] bg-gradient-to-r from-transparent via-slate-700 to-transparent w-full mb-8"></div>
+            <p class="text-slate-500 text-lg">
+                【主題探索報告】by <span class="italic text-red-500 font-bold">Famidoc Chang</span>
+            </p>
+            <p class="text-slate-600 text-sm mt-2 tracking-widest">
+                學號：M11416218
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Subtle scroll reveal effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
